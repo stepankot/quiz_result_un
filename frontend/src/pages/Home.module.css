@@ -1,0 +1,142 @@
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.versionBadge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-medium));
+  border-radius: 16px;
+  padding: 10px 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(44, 90, 160, 0.25);
+}
+
+.versionText {
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--brand-darkest);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.titleLoading {
+  color: var(--brand-pale);
+}
+
+.subtitle {
+  color: var(--brand-soft);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.actionsCard {
+  margin-bottom: 32px;
+}
+
+.actionsTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 20px;
+}
+
+.buttonsRow {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.historyTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emptyCard {
+  text-align: center;
+  padding: 40px 32px;
+}
+
+.emptyIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(44, 90, 160, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.emptyText {
+  color: var(--brand-pale);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.emptySubtext {
+  color: var(--brand-pale);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.historyItem {
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.historyDate {
+  font-size: 13px;
+  color: var(--brand-pale);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.historyScore {
+  font-size: 15px;
+  color: var(--brand-dark);
+  font-weight: 600;
+}
+
+.scoreBadge {
+  border-radius: var(--radius-pill);
+  padding: 6px 18px;
+  font-weight: 700;
+  font-size: 15px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.scoreBadgeGood {
+  background: rgba(39, 174, 96, 0.12);
+  color: var(--positive);
+}
+
+.scoreBadgeBad {
+  background: rgba(192, 57, 43, 0.10);
+  color: var(--negative);
+}

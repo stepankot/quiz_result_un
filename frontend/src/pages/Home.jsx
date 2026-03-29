@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './Home.module.css';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -42,56 +43,31 @@ export default function Home() {
   return (
     <div className="page-container">
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <div
-          style={{
-            display: 'inline-block',
-            background: 'linear-gradient(135deg, var(--brand-primary), var(--brand-medium))',
-            borderRadius: '16px',
-            padding: '10px 22px',
-            marginBottom: '20px',
-            boxShadow: '0 4px 20px rgba(44,90,160,0.25)'
-          }}
-        >
-          <span style={{ color: '#fff', fontWeight: 700, fontSize: '13px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+      <div className={styles.header}>
+        <div className={styles.versionBadge}>
+          <span className={styles.versionText}>
             Quiz 0.1
           </span>
         </div>
 
-        <h1
-          style={{
-            fontSize: '42px',
-            fontWeight: 800,
-            color: 'var(--brand-darkest)',
-            lineHeight: 1.1,
-            marginBottom: '12px',
-            letterSpacing: '-0.5px'
-          }}
-        >
+        <h1 className={styles.title}>
           {loadingTitle ? (
-            <span style={{ color: 'var(--brand-pale)' }}>Загрузка...</span>
+            <span className={styles.titleLoading}>Загрузка...</span>
           ) : (
             quizTitle
           )}
         </h1>
-        <p style={{ color: 'var(--brand-soft)', fontSize: '16px', fontWeight: 500 }}>
+        <p className={styles.subtitle}>
           Проверьте свои знания и отслеживайте прогресс
         </p>
       </div>
 
       {/* Action buttons */}
-      <div className="glass-card" style={{ marginBottom: '32px' }}>
-        <h2
-          style={{
-            fontSize: '18px',
-            fontWeight: 700,
-            color: 'var(--brand-dark)',
-            marginBottom: '20px'
-          }}
-        >
+      <div className={`glass-card ${styles.actionsCard}`}>
+        <h2 className={styles.actionsTitle}>
           Начать
         </h2>
-        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+        <div className={styles.buttonsRow}>
           <button className="btn-primary" onClick={() => navigate('/quiz')}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polygon points="5 3 19 12 5 21 5 3" />
@@ -110,17 +86,7 @@ export default function Home() {
 
       {/* History section */}
       <div>
-        <h2
-          style={{
-            fontSize: '20px',
-            fontWeight: 700,
-            color: 'var(--brand-dark)',
-            marginBottom: '16px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px'
-          }}
-        >
+        <h2 className={styles.historyTitle}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-medium)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="10" />
             <polyline points="12 6 12 12 16 14" />
@@ -129,36 +95,22 @@ export default function Home() {
         </h2>
 
         {history.length === 0 ? (
-          <div
-            className="glass-card"
-            style={{ textAlign: 'center', padding: '40px 32px' }}
-          >
-            <div
-              style={{
-                width: '56px',
-                height: '56px',
-                borderRadius: '50%',
-                background: 'rgba(44,90,160,0.08)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 16px'
-              }}
-            >
+          <div className={`glass-card ${styles.emptyCard}`}>
+            <div className={styles.emptyIcon}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand-pale)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 3h18v18H3z" />
                 <path d="M9 9h6M9 13h4" />
               </svg>
             </div>
-            <p style={{ color: 'var(--brand-pale)', fontSize: '15px', fontWeight: 500 }}>
+            <p className={styles.emptyText}>
               История пуста
             </p>
-            <p style={{ color: 'var(--brand-pale)', fontSize: '13px', marginTop: '6px' }}>
+            <p className={styles.emptySubtext}>
               Пройдите тест, чтобы увидеть результаты здесь
             </p>
           </div>
         ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div className={styles.historyList}>
             {[...history].reverse().map((entry, index) => {
               const pct = entry.totalQuestions > 0
                 ? Math.round((entry.correctAnswers / entry.totalQuestions) * 100)
@@ -167,31 +119,17 @@ export default function Home() {
               return (
                 <div
                   key={index}
-                  className="glass-card"
-                  style={{ padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}
+                  className={`glass-card ${styles.historyItem}`}
                 >
                   <div>
-                    <div style={{ fontSize: '13px', color: 'var(--brand-pale)', fontWeight: 500, marginBottom: '4px' }}>
+                    <div className={styles.historyDate}>
                       {formatDate(entry.date)}
                     </div>
-                    <div style={{ fontSize: '15px', color: 'var(--brand-dark)', fontWeight: 600 }}>
+                    <div className={styles.historyScore}>
                       {entry.correctAnswers} из {entry.totalQuestions} правильных ответов
                     </div>
                   </div>
-                  <div
-                    style={{
-                      background: isGood
-                        ? 'rgba(39,174,96,0.12)'
-                        : 'rgba(192,57,43,0.10)',
-                      color: isGood ? 'var(--positive)' : 'var(--negative)',
-                      borderRadius: 'var(--radius-pill)',
-                      padding: '6px 18px',
-                      fontWeight: 700,
-                      fontSize: '15px',
-                      minWidth: '60px',
-                      textAlign: 'center'
-                    }}
-                  >
+                  <div className={`${styles.scoreBadge} ${isGood ? styles.scoreBadgeGood : styles.scoreBadgeBad}`}>
                     {pct}%
                   </div>
                 </div>
